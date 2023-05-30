@@ -31,7 +31,7 @@ items.addEventListener('click', (evento) => {
 //utilizamos fetch para comumir los datos de la api, en este caso la api es una simulacion local de una api
 const capturandoData = async () => {
 	try {
-		const respuesta = await fetch('api.json');
+		const respuesta = await fetch('https://fakestoreapi.com/products/category/electronics');
 		const data = await respuesta.json();
 		// console.log(data);
 		pintarProductos(data);
@@ -46,9 +46,9 @@ const pintarProductos = (data) => {
 		// seleccionamos el titulo y le insertamos el titulo
 		templateCard.querySelector('h5').textContent = producto.title;
 		//seleccionamos el parrafo y le insertamos el precio
-		templateCard.querySelector('p').textContent = producto.precio;
+		templateCard.querySelector('p').textContent = producto.price;
 		//seleccionamos la imagen y le seteamos la imagen
-		templateCard.querySelector('img').setAttribute('src', producto.thumbnailUrl);
+		templateCard.querySelector('img').setAttribute('src', producto.image);
 		// seleccionamos el boton y le asignamos el id de ese producto
 		templateCard.querySelector('button').dataset.id = producto.id;
 		const clone = templateCard.cloneNode(true);
